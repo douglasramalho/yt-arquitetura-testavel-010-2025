@@ -1,15 +1,12 @@
 package com.example.testablearchmvvmandroid
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class UserViewModel(context: Context) : ViewModel() {
-
-    private val repository = UserRepository(context)
+class UserViewModel(private val repository: UserRepository) : ViewModel() {
 
     private val _userName = MutableStateFlow("Carregando...")
     val userName = _userName.asStateFlow()
